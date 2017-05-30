@@ -36,8 +36,8 @@ describe Analyser do
   describe "#calculate_like_dislike_percentage" do
     context "when given a data hash for a single video" do
       it "will return the like dislike percentage for that video" do
-        expect(subject.calculate_like_dislike_percentage(json["video"][0])).to eq 100
-        expect(subject.calculate_like_dislike_percentage(json["video"][1])).to eq 99.4
+        expect(subject.calculate_like_dislike_percentage(json["videos"][0])).to eq 100
+        expect(subject.calculate_like_dislike_percentage(json["videos"][1])).to eq 99.4
       end
     end
   end
