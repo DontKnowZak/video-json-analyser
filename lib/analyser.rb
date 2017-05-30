@@ -58,6 +58,12 @@ class Analyser
   end
 
   def average_time_between_videos(videos)
+    total_time = total_time_between_videos(videos)
+    average_time = (total_time / (videos.size - 1)).round
+    return average_time
+  end
+
+  def total_time_between_videos(videos)
     total_time = 0
     previous_time = nil
     videos.each do |video|
@@ -67,10 +73,9 @@ class Analyser
       end
       previous_time = this_time
     end
-    average_time = (total_time / (videos.size - 1)).round
-    return average_time
+    return total_time
   end
-  
+
   private
 
   def percent(decimal)
