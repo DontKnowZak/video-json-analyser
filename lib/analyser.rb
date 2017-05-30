@@ -19,10 +19,28 @@ class Analyser
     return percent(likes / total)
   end
 
+  def highest_like_dislike_percentage(video_data)
+    @highest_percentage = [0, ""]
+    video_data.each do |video|
+      percentage = calculate_like_dislike_percentage(video)
+      title = video["title"]
+      check_highest(percentage) ? update_highest(percentage, title) : @highest_percentage
+    end
+    return @highest_percentage
+  end
+
   private
 
   def percent(decimal)
     (decimal * 100).round(2)
+  end
+
+  def check_highest(percentage)
+    @highest_percentage[0] < percentage
+  end
+
+  def update_highest(percentage, title)
+    @highest_percentage = [percentage, title]
   end
 
 end
