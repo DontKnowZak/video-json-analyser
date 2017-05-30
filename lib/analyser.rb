@@ -19,7 +19,8 @@ class Analyser
     parse_json
     video_data = @data["videos"]
     highest_like_dislike_percentage(video_data)
-    @printer.output(@highest_percentage)
+    average_percentage = average_like_dislike_percentage(video_data)
+    @printer.output(@highest_percentage, average_percentage)
   end
 
   def calculate_like_dislike_percentage(video_data)
