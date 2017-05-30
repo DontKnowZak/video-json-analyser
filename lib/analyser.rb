@@ -60,7 +60,10 @@ class Analyser
   def average_time_between_videos(videos)
     total_time = total_time_between_videos(videos)
     average_time = (total_time / (videos.size - 1)).round
-    return average_time
+    minutes, seconds = average_time.divmod(60)
+    hours, minutes = minutes.divmod(60)
+    days, hours = hours.divmod(24)
+    return [days, hours, minutes, seconds]
   end
 
   def total_time_between_videos(videos)
