@@ -63,4 +63,12 @@ describe Analyser do
       end
     end
   end
+
+  describe "#total_views" do
+    context "when given an array of data hashes for videos" do
+      it "will return the total view count of videos in the array" do
+        expect(subject.total_views(json["videos"])).to eq 93617
+      end
+    end
+  end
 end
