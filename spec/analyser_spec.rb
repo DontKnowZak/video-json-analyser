@@ -8,7 +8,7 @@ describe Analyser do
         "title"=>"Test Video",
         "views"=>401,
         "link"=>"dQw4w9WgXcQ", "thumbnail"=>"https://i.ytimg.com/vi/gTUi5iUqQ_I/mqdefault.jpg",
-        "published_at"=>"2017-01-10T12:00:30.000Z",
+        "published_at"=>"2017-02-01T12:00:00.000Z",
         "likes"=>25,
         "dislikes"=>0
       },
@@ -16,7 +16,7 @@ describe Analyser do
         "title"=>"Better Video",
         "views"=>93216,
         "link"=>"dQw4w9WgXcQ", "thumbnail"=>"https://i.ytimg.com/vi/3ihrNAaBZU8/mqdefault.jpg",
-        "published_at"=>"2017-02-01T18:00:00.000Z",
+        "published_at"=>"2017-01-01T12:00:00.000Z",
         "likes"=>5000,
         "dislikes"=>30
       }
@@ -68,6 +68,14 @@ describe Analyser do
     context "when given an array of data hashes for videos" do
       it "will return the total view count of videos in the array" do
         expect(subject.total_views(json["videos"])).to eq 93617
+      end
+    end
+  end
+
+  describe "#average_time_between_videos" do
+    context "when given an array of data hashes for videos" do
+      it "will return the average time between videos" do
+        expect(subject.average_time_between_videos(json["videos"])).to eq 2678400
       end
     end
   end
