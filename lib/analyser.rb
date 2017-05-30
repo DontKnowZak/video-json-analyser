@@ -57,6 +57,20 @@ class Analyser
     return view_count
   end
 
+  def average_time_between_videos(videos)
+    total_time = 0
+    previous_time = nil
+    videos.each do |video|
+      this_time = DateTime.iso8601(video["published_at"]).to_time
+      if previous_time then
+        total_time += (previous_time - this_time)
+      end
+      previous_time = this_time
+    end
+    average_time = (total_time / (videos.size - 1)).round
+    return average_time
+  end
+  
   private
 
   def percent(decimal)
