@@ -47,4 +47,12 @@ describe Analyser do
       end
     end
   end
+
+  describe "#highest_like_dislike_percentage" do
+    context "when given an array of data hashes for videos" do
+      it "will return the highest like dislike percentage and the title" do
+        expect(subject.highest_like_dislike_percentage(json["videos"])).to eq [100, "Test Video"]
+      end
+    end
+  end
 end
