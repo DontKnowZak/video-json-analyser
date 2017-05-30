@@ -13,7 +13,13 @@ class Analyser
   def calculate_like_dislike_percentage(video_data)
     likes = video_data["likes"].to_f
     total = (video_data["likes"] + video_data["dislikes"]).to_f
-    return ((likes / total)* 100).round(2)
+    return percent(likes / total)
   end
-  
+
+  private
+
+  def percent(decimal)
+    (decimal * 100).round(2)
+  end
+
 end
