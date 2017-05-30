@@ -1,8 +1,8 @@
-require 'parser'
+require 'json'
 
-class Analyser
+class Parser
 
-  def parse_json(file_path = ARGV[0])
+  def read(file_path)
     file = File.read(file_path)
     data = JSON.parse(file)
   end
