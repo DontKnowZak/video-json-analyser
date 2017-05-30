@@ -20,7 +20,8 @@ class Analyser
     video_data = @data["videos"]
     highest_like_dislike_percentage(video_data)
     average_percentage = average_like_dislike_percentage(video_data)
-    @printer.output(@highest_percentage, average_percentage)
+    total_views = total_views(video_data)
+    @printer.output(@highest_percentage, average_percentage, total_views)
   end
 
   def calculate_like_dislike_percentage(video_data)
