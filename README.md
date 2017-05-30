@@ -34,3 +34,5 @@ I felt that as I knew what single JSON I was running on the program, the size of
 I did not test the printed output as all the logic was handled outside of this class and merely the results passed down and placed into a pre-constructed string.
 
 In terms of refactoring I would go deeper into the program to improve to overall readability for other developers and ensure the code is efficient. I also debated on and didn't completely settle on whether to use one loop and perform the necessary actions set out in the guideline in that loop or perform each action completely independently and loop through for each action. In the program I decided to separate each feature.
+
+One step in further in the right direction would be combining the highest percentage and average percentage methods since both have to calculate the percentage of each individual video before they can calculate the respective cumulative values, so sharing the individual percentages would improve the efficiency, reducing repetition.
