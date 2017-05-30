@@ -75,7 +75,7 @@ describe Analyser do
   describe "#average_time_between_videos" do
     context "when given an array of data hashes for videos" do
       it "will return the average time between videos" do
-        expect(subject.average_time_between_videos(json["videos"])).to eq 2678400
+        expect(subject.average_time_between_videos(json["videos"])).to eq [31, 0, 0, 0]
       end
     end
   end
