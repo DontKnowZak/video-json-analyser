@@ -17,7 +17,7 @@ This program takes a JSON in the format of
 ```
 and calculates the video with the highest like to dislike percentage, the average like to dislike percentage across all videos, total views across all the videos and the average time between each video.
 
-In order to use the program you must clone this repository and run
+In order to use the program you must clone this repository, have ruby installed and run
 ```
 ruby app.rb path-to-json
 ```
@@ -25,6 +25,7 @@ i.e.
 ```
 ruby app.rb zoella_videos.json
 ```
+Note: It was written in Ruby 2.3.1
 
 Going forward on this project I would focus on, more error checking, testing output and general refactoring.
 
