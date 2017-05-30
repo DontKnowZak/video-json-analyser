@@ -55,4 +55,12 @@ describe Analyser do
       end
     end
   end
+
+  describe "#average_like_dislike_percentage" do
+    context "when given an array of data hashes for videos" do
+      it "will return the average like dislike percentage" do
+        expect(subject.average_like_dislike_percentage(json["videos"])).to eq 99.7
+      end
+    end
+  end
 end
