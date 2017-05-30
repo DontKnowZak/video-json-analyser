@@ -48,6 +48,14 @@ class Analyser
     return (@total_percentages / videos.size).round(2)
   end
 
+  def total_views(videos)
+    view_count = 0
+    videos.each do |video|
+      view_count += get_views(video)
+    end
+    return view_count
+  end
+
   private
 
   def percent(decimal)
@@ -64,6 +72,10 @@ class Analyser
 
   def add_percentage_to_total(percentage)
     @total_percentages += percentage
+  end
+
+  def get_views(video_data)
+    video_data["views"]
   end
 
 end
