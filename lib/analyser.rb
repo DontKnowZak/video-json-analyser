@@ -1,9 +1,11 @@
 require_relative 'parser'
+require_relative 'printer'
 
 class Analyser
 
   def initialize
     @parser = Parser.new
+    @printer = Printer.new
   end
 
   def parse_json(file_path = ARGV[0])
@@ -17,6 +19,7 @@ class Analyser
     parse_json
     video_data = @data["videos"]
     highest_like_dislike_percentage(video_data)
+    @printer.output(@highest_percentage)
   end
 
   def calculate_like_dislike_percentage(video_data)
