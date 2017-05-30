@@ -38,6 +38,15 @@ class Analyser
     return @highest_percentage
   end
 
+  def average_like_dislike_percentage(videos)
+    @total_percentages = 0
+    videos.each do |video|
+      percentage = calculate_like_dislike_percentage(video)
+      add_percentage_to_total(percentage)
+    end
+    return (@total_percentages / videos.size).round(2)
+  end
+
   private
 
   def percent(decimal)
@@ -50,6 +59,10 @@ class Analyser
 
   def update_highest(highest)
     @highest_percentage = highest
+  end
+
+  def add_percentage_to_total(percentage)
+    @total_percentages += percentage
   end
 
 end
