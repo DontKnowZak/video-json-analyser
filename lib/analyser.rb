@@ -12,7 +12,7 @@ class Analyser
     if file_path == nil then
       raise 'No file path provided.'
     end
-    data = @parser.read(file_path)
+    @data = @parser.read(file_path)
   end
 
   def run
