@@ -1,4 +1,4 @@
-require 'parser'
+require_relative 'parser'
 
 class Analyser
 
@@ -11,6 +11,12 @@ class Analyser
       raise 'No file path provided.'
     end
     data = @parser.read(file_path)
+  end
+
+  def run
+    parse_json
+    video_data = @data["videos"]
+    highest_like_dislike_percentage(video_data)
   end
 
   def calculate_like_dislike_percentage(video_data)
