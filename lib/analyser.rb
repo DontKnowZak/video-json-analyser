@@ -1,5 +1,6 @@
 require_relative 'parser'
 require_relative 'printer'
+require 'date'
 
 class Analyser
 
@@ -21,7 +22,8 @@ class Analyser
     highest_like_dislike_percentage(video_data)
     average_percentage = average_like_dislike_percentage(video_data)
     total_views = total_views(video_data)
-    @printer.output(@highest_percentage, average_percentage, total_views)
+    average_time_between_videos = average_time_between_videos(video_data)
+    @printer.output(@highest_percentage, average_percentage, total_views, average_time_between_videos)
   end
 
   def calculate_like_dislike_percentage(video_data)
