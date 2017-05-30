@@ -15,7 +15,7 @@ This program takes a JSON in the format of
   ...
 }
 ```
-and calculates the video with the highest like to dislike percentage, the average like to dislike percentage across all videos and the total views across all the videos.
+and calculates the video with the highest like to dislike percentage, the average like to dislike percentage across all videos, total views across all the videos and the average time between each video.
 
 In order to use the program you must clone this repository and run
 ```
