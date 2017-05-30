@@ -7,6 +7,9 @@ class Analyser
   end
 
   def parse_json(file_path = ARGV[0])
+    if file_path == nil then
+      raise 'No file path provided.'
+    end
     data = @parser.read(file_path)
   end
 

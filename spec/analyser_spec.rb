@@ -31,6 +31,12 @@ describe Analyser do
         expect(subject.parse_json("test.json")["videos"][0]["title"]).to eq "Test Video"
       end
     end
+
+    context "when not provided a file path" do
+      it "will throw error" do
+        expect{subject.parse_json}.to raise_error(RuntimeError)
+      end
+    end
   end
 
   describe "#calculate_like_dislike_percentage" do
