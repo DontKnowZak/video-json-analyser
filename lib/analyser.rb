@@ -18,11 +18,7 @@ class Analyser
 
   def run
     parse_json
-    highest_percentage = highest_like_dislike_percentage
-    average_percentage = average_like_dislike_percentage
-    total_views = total_views(video_data)
-    average_time_between_videos = average_time_between_videos(video_data)
-    @printer.output(highest_percentage, average_percentage, total_views, average_time_between_videos)
+    @printer.output(highest_like_dislike_percentage, average_like_dislike_percentage, total_views, average_time_between_videos)
   end
 
   def highest_like_dislike_percentage
@@ -42,28 +38,28 @@ class Analyser
     return (total_percentages / @videos.size).round(2)
   end
 
-  def total_views(videos)
+  def total_views
     view_count = 0
-    videos.each do |video|
+    @videos.each do |video|
       view_count += video.views
     end
     return view_count
   end
 
-  def average_time_between_videos(videos)
-    total_time = total_time_between_videos(videos)
-    average_time = (total_time / (videos.size - 1)).round
+  def average_time_between_videos
+    total_time = total_time_between_videos
+    average_time = (total_time / (@videos.size - 1)).round
     minutes, seconds = average_time.divmod(60)
     hours, minutes = minutes.divmod(60)
     days, hours = hours.divmod(24)
     return [days, hours, minutes, seconds]
   end
 
-  def total_time_between_videos(videos)
+  def total_time_between_videos
     total_time = 0
     previous_time = nil
-    videos.each do |video|
-      this_time = DateTime.iso8601(video["published_at"]).to_time
+    @videos.each do |video|
+      this_time = DateTime.iso8601(video.published_at).to_time
       if previous_time then
         total_time += (previous_time - this_time)
       end

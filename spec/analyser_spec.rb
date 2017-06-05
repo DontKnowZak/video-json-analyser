@@ -1,4 +1,5 @@
 require 'analyser'
+require 'video'
 
 describe Analyser do
 
@@ -23,6 +24,10 @@ describe Analyser do
     ]
   })
 
+  before(:each) do
+    subject.instance_variable_set(:@videos, [Video.new("Test Video", 401, "dQw4w9WgXcQ", "https://i.ytimg.com/vi/gTUi5iUqQ_I/mqdefault.jpg", "2017-02-01T12:00:00.000Z", 25, 0), Video.new("Better Video", 93216, "dQw4w9WgXcQ", "https://i.ytimg.com/vi/3ihrNAaBZU8/mqdefault.jpg", "2017-01-01T12:00:00.000Z", 5000, 30)])
+  end
+
   describe "#parse_json" do
     context "when provided a file path" do
       it "will receive the formatted json from a parser" do
@@ -39,19 +44,10 @@ describe Analyser do
     end
   end
 
-  describe "#calculate_like_dislike_percentage" do
-    context "when given a data hash for a single video" do
-      it "will return the like dislike percentage for that video" do
-        expect(subject.calculate_like_dislike_percentage(json["videos"][0])).to eq 100
-        expect(subject.calculate_like_dislike_percentage(json["videos"][1])).to eq 99.4
-      end
-    end
-  end
-
   describe "#highest_like_dislike_percentage" do
     context "when given an array of data hashes for videos" do
       it "will return the highest like dislike percentage and the title" do
-        expect(subject.highest_like_dislike_percentage(json["videos"])).to eq [100, "Test Video"]
+        expect(subject.highest_like_dislike_percentage).to eq [100, "Test Video"]
       end
     end
   end
@@ -59,7 +55,7 @@ describe Analyser do
   describe "#average_like_dislike_percentage" do
     context "when given an array of data hashes for videos" do
       it "will return the average like dislike percentage for the array" do
-        expect(subject.average_like_dislike_percentage(json["videos"])).to eq 99.7
+        expect(subject.average_like_dislike_percentage).to eq 99.7
       end
     end
   end
@@ -67,7 +63,7 @@ describe Analyser do
   describe "#total_views" do
     context "when given an array of data hashes for videos" do
       it "will return the total view count of videos in the array" do
-        expect(subject.total_views(json["videos"])).to eq 93617
+        expect(subject.total_views).to eq 93617
       end
     end
   end
@@ -75,7 +71,7 @@ describe Analyser do
   describe "#average_time_between_videos" do
     context "when given an array of data hashes for videos" do
       it "will return the average time between videos" do
-        expect(subject.average_time_between_videos(json["videos"])).to eq [31, 0, 0, 0]
+        expect(subject.average_time_between_videos).to eq [31, 0, 0, 0]
       end
     end
   end
